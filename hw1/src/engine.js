@@ -17,7 +17,7 @@ function GAMES202Main() {
 		return;
 	}
 
-	// Add camera
+	// Add camera  fov,aspect,near,far
 	const camera = new THREE.PerspectiveCamera(75, gl.canvas.clientWidth / gl.canvas.clientHeight, 1e-2, 1000);
 	camera.position.set(cameraPosition[0], cameraPosition[1], cameraPosition[2]);
 
