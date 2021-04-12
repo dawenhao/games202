@@ -1,7 +1,8 @@
 class PhongMaterial extends Material {
 
+    // map, 
     constructor(color, specular, light, translate, scale, vertexShader, fragmentShader) {
-        console.log("PhongMaterial 构造器 ");
+        console.log("PhongMaterial CalcLightMVP");
         let lightMVP = light.CalcLightMVP(translate, scale);
         let lightIntensity = light.mat.GetIntensity();
 

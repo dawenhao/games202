@@ -14,6 +14,7 @@ class DirectionalLight {
         this.lightUp = lightUp
 
         this.hasShadowMap = hasShadowMap;
+        // 帧缓冲对象(Framebuffer Object, FBO)
         this.fbo = new FBO(gl);
         if (!this.fbo) {
             console.log("无法设置帧缓冲区对象");
@@ -22,7 +23,6 @@ class DirectionalLight {
     }
 
     CalcLightMVP(translate, scale) {
-        console.log("CalcLightMVP");
         let lightMVP = mat4.create();
         let modelMatrix = mat4.create();
         let viewMatrix = mat4.create();

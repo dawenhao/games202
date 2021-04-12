@@ -1,6 +1,7 @@
 class ShadowMaterial extends Material {
 
     constructor(light, translate, scale, vertexShader, fragmentShader) {
+        console.log("ShadowMaterial CalcLightMVP");
         let lightMVP = light.CalcLightMVP(translate, scale);
 
         super({
