@@ -34,12 +34,15 @@ class DirectionalLight {
         console.log("M变换：" + modelMatrix);
 
         // View transform
-        let newLPos = [-this.lightPos[0], -this.lightPos[1], -this.lightPos[2]];
-        mat4.translate(viewMatrix, viewMatrix, newLPos);
+        // (static) lookAt(out, eye, center, up) → {mat4} 
+        // Generates a look-at matrix with the given eye position, focal point, and up axis. If you want a matrix that actually makes an object look at another object, you should use targetTo instead.
+        mat4.lookAt(viewMatrix, this.lightPos, this.focalPoint, this.lightUp);
         console.log("V变换：" + viewMatrix);
 
         // Projection transform
-        mat4.lookAt(projectionMatrix, this.lightPos, this.focalPoint, this.lightUp);
+        // (static) ortho(out, left, right, bottom, top, near, far) → {mat4}
+        // Generates a orthogonal projection matrix with the given bounds
+        mat4.ortho(projectionMatrix, -150, 150, -100, 100, 1e-2, 1000);
         console.log("P变换：" + projectionMatrix);
 
         mat4.multiply(lightMVP, projectionMatrix, viewMatrix);
