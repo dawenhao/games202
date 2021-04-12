@@ -29,8 +29,8 @@ class DirectionalLight {
         let projectionMatrix = mat4.create();
 
         // Model transform
-        mat4.scale(modelMatrix, modelMatrix, scale);
         mat4.translate(modelMatrix, modelMatrix, translate);
+        mat4.scale(modelMatrix, modelMatrix, scale);
         console.log("M变换：" + modelMatrix);
 
         // View transform
@@ -42,7 +42,7 @@ class DirectionalLight {
         // Projection transform
         // (static) ortho(out, left, right, bottom, top, near, far) → {mat4}
         // Generates a orthogonal projection matrix with the given bounds
-        mat4.ortho(projectionMatrix, -150, 150, -100, 100, 1e-2, 1000);
+        mat4.ortho(projectionMatrix, -100, 100, -100, 100, 1e-2, 1000);
         console.log("P变换：" + projectionMatrix);
 
         mat4.multiply(lightMVP, projectionMatrix, viewMatrix);

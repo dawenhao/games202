@@ -10,7 +10,7 @@ uniform mat4 uLightMVP;
 varying highp vec2 vTextureCoord;
 varying highp vec3 vFragPos;
 varying highp vec3 vNormal;
-varying highp vec4 vPositionFromLight; // light Space下的定点位置
+varying highp vec4 vPositionFromLight;
 
 void main(void) {
 

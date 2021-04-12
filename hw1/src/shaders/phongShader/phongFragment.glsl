@@ -64,6 +64,7 @@ void poissonDiskSamples(const in vec2 randomSeed) {
 }
 
 void uniformDiskSamples(const in vec2 randomSeed) {
+
   float randNum = rand_2to1(randomSeed);
   float sampleX = rand_1to1(randNum);
   float sampleY = rand_1to1(sampleX);
@@ -99,14 +100,15 @@ float PCSS(sampler2D shadowMap, vec4 coords) {
   // STEP 3: filtering
 
   return 1.0;
+
 }
 
-float useShadowMap(sampler2D shadowMap, vec4 coords) {
-  vec3 result = texture2D(shadowMap, coords.xy).rgb;
-  result = pow(result, vec3(2.2));
-  if(coords.z > result.b)
+float useShadowMap(sampler2D shadowMap, vec4 shadowCoord) {
+  vec3 color = texture2D(shadowMap, shadowCoord.xy).rgb;
+  color = pow(color, vec3(2.2));
+  if(vFragPos.z > color.b)
     return 1.0;
-  return result.b;
+  return color.b;
 }
 
 vec3 blinnPhong() {
@@ -138,11 +140,9 @@ void main(void) {
   shadowCoord = shadowCoord / shadowCoord.w;
   shadowCoord = shadowCoord * 0.5 + 0.5;
   visibility = useShadowMap(uShadowMap, shadowCoord);
-
   //visibility = PCF(uShadowMap, vec4(shadowCoord, 1.0));
   //visibility = PCSS(uShadowMap, vec4(shadowCoord, 1.0));
 
-  //visibility = clamp(visibility, 0.3, 0.95);
   vec3 phongColor = blinnPhong();
 
   gl_FragColor = vec4(phongColor * visibility, 1.0);
