@@ -1,3 +1,4 @@
+// 渲染器、路径、文件名、材质球、变换
 function loadOBJ(renderer, path, name, objMaterial, transform) {
 	console.log("loadOBJ called");
 	const manager = new THREE.LoadingManager();

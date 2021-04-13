@@ -1,4 +1,4 @@
-
+// 网格渲染器
 class MeshRender {
 
 	#vertexBuffer;
@@ -6,6 +6,7 @@ class MeshRender {
 	#texcoordBuffer;
 	#indicesBuffer;
 
+	// gl、网格、材质球
 	constructor(gl, mesh, material) {
 
 		this.gl = gl;

@@ -7,8 +7,8 @@ class DirectionalLight {
     // <float3>lightUp
     // <bool>hasShadowMap
     constructor(lightIntensity, lightColor, lightPos, focalPoint, lightUp, hasShadowMap, gl) {
-        this.mesh = Mesh.cube(setTransform(0, 0, 0, 0.2, 0.2, 0.2, 0));
-        this.mat = new EmissiveMaterial(lightIntensity, lightColor);
+        this.mesh = Mesh.cube(setTransform(0, 0, 0, 0.2, 0.2, 0.2, 0));// 网格
+        this.mat = new EmissiveMaterial(lightIntensity, lightColor);   // 发光材质球
         this.lightPos = lightPos;
         this.focalPoint = focalPoint;
         this.lightUp = lightUp

@@ -47,11 +47,12 @@ function GAMES202Main() {
 	let lightPos = [0, 80, 80];
 	let focalPoint = [0, 0, 0];
 	let lightUp = [0, 1, 0]
+	// 光照强度、灯光颜色、灯光位置、焦点、灯光向上方向、是否使用ShadowMap、gl
 	const directionLight = new DirectionalLight(5000, [1, 1, 1], lightPos, focalPoint, lightUp, true, renderer.gl);
 	renderer.addLight(directionLight);
 
 	// Add shapes
-	
+	// 设置模型位置、缩放
 	let floorTransform = setTransform(0, 0, -30, 4, 4, 4);
 	let obj1Transform = setTransform(0, 0, 0, 20, 20, 20);
 	let obj2Transform = setTransform(40, 0, -40, 10, 10, 10);
@@ -87,6 +88,7 @@ function GAMES202Main() {
 	requestAnimationFrame(mainLoop);
 }
 
+// 设置变换
 function setTransform(t_x, t_y, t_z, s_x, s_y, s_z) {
 	return {
 		modelTransX: t_x,
