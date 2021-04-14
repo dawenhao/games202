@@ -1,6 +1,6 @@
 // 渲染器、路径、文件名、材质球、变换
 function loadOBJ(renderer, path, name, objMaterial, transform) {
-	console.log("loadOBJ called");
+	//console.log("loadOBJ called");
 	const manager = new THREE.LoadingManager();
 	manager.onProgress = function (item, loaded, total) {
 		console.log(item, loaded, total);
@@ -17,7 +17,6 @@ function loadOBJ(renderer, path, name, objMaterial, transform) {
 	new THREE.MTLLoader(manager)
 		.setPath(path)
 		.load(name + '.mtl', function (materials) {
-			console.log("THREE.MTLLoader");
 			materials.preload();
 
 			new THREE.OBJLoader(manager)
@@ -25,7 +24,6 @@ function loadOBJ(renderer, path, name, objMaterial, transform) {
 				.setPath(path)
 				.load(name + '.obj', function (object) {
 					object.traverse(function (child) {
-						console.log("THREE.MTLLoader 222222222 + " + name);
 						if (child.isMesh) {
 							let geo = child.geometry;
 							let mat;
@@ -53,7 +51,6 @@ function loadOBJ(renderer, path, name, objMaterial, transform) {
 							let light = renderer.lights[0].entity;
 							switch (objMaterial) {
 								case 'PhongMaterial':
-									console.log("loadOBJ case PhongMaterial " + child.name);
 									material = buildPhongMaterial(colorMap, mat.specular.toArray(), light, Translation, Scale, "./src/shaders/phongShader/phongVertex.glsl", "./src/shaders/phongShader/phongFragment.glsl");
 									shadowMaterial = buildShadowMaterial(light, Translation, Scale, "./src/shaders/shadowShader/shadowVertex.glsl", "./src/shaders/shadowShader/shadowFragment.glsl");
 									break;
